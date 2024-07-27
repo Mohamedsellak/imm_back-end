@@ -24,4 +24,8 @@ class Site extends Model
     public function workspace(){
         return $this->belongsTo(Workspace::class);
     }
+
+    public function buildings(){
+        return $this->hasMany(Building::class);
+    }
 }

@@ -63,15 +63,7 @@ class SiteController extends Controller
             return response()->json(['errors' => $validator->errors()], 400);
         }
 
-        $site = new Site();
-        $site->code = $request->code;
-        $site->name = $request->name;
-        $site->activity = $request->activity;
-        $site->address = $request->address;
-        $site->zipcode = $request->zipcode;
-        $site->city = $request->city;
-        $site->country = $request->country;
-        $site->floor_area = $request->floor_area;
+        $site = new Site($request->all());
         $site->workspace_id = $workspace->id;
         $site->save();
 

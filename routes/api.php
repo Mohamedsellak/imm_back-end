@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\BuildingController;
 use App\Http\Controllers\Api\WorkspaceController;
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\SiteController;
@@ -44,6 +45,27 @@ Route::group([
         Route::get('/{site}', [SiteController::class, 'show']);
         Route::put('/{site}', [SiteController::class, 'update']);
         Route::delete('/{site}', [SiteController::class, 'destroy']);
+
+        Route::group([
+            'prefix' => '{site}/buildings',
+        ], function () {
+            Route::get('/', [BuildingController::class, 'index']);
+            Route::post('/', [BuildingController::class, 'store']);
+            Route::get('/{building}', [BuildingController::class, 'show']);
+            Route::put('/{building}', [BuildingController::class, 'update']);
+            Route::delete('/{building}', [BuildingController::class, 'destroy']);
+
+            Route::group([
+                'prefix' => '{building}/componenets',
+            ], function () {
+                Route::get('/', [BuildingController::class, 'index']);
+                Route::post('/', [BuildingController::class, 'store']);
+                Route::get('/{componenet}', [BuildingController::class, 'show']);
+                Route::put('/{componenet}', [BuildingController::class, 'update']);
+                Route::delete('/{componenet}', [BuildingController::class, 'destroy']);
+                
+            });
+        });
 
     });
 
