@@ -10,7 +10,16 @@ class Component extends Model
     use HasFactory;
 
     protected $fillable = [
-        code 	name 	quantity 	unit 	last_rehabilitation_year 	condition 	severity_max 	risk_level 	description 	building_id
+        'code',
+        'name',
+        'quantity',
+        'unit',
+        'last_rehabilitation_year',
+        'condition',
+        'severity_max',
+        'risk_level',
+        'description',
+        'building_id'
     ];
 
     public function building(){
